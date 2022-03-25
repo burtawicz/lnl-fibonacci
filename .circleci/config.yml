@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/rust:1.59.0
+    steps:
+      - checkout
+      - run:
+          name: Verify cargo version
+          command: cargo --version
+      - run:
+          name: Time to test
+          command: cargo test
+
+workflows:
+  primary:
+    jobs:
+      - test
